@@ -17,6 +17,16 @@ import { v4 as uuid } from "uuid";
 
 async function main() {
   const app = Fastify({ logger: true });
+
+  // Root route for health check
+  app.get("/", async () => {
+    return { status: "ok", service: "Order Execution Engine", version: "0.1.0" };
+  });
+
+  app.get("/health", async () => {
+    return { status: "healthy", timestamp: new Date().toISOString() };
+  });
+
   const engine = new MatchingEngine();
 
   // Initialize DB tables
