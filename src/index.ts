@@ -1,8 +1,12 @@
-import Fastify from 'fastify';
-import { MatchingEngine } from './engine/index.js';
-import { registerRoutes, registerWebSocket, broadcastTrades } from './api/index.js';
-import { initDb, saveTrade } from './db/index.js';
-import { startOrderWorker } from './queue/index.js';
+import Fastify from "fastify";
+import { MatchingEngine } from "./engine/index.js";
+import {
+  registerRoutes,
+  registerWebSocket,
+  broadcastTrades,
+} from "./api/index.js";
+import { initDb, saveTrade } from "./db/index.js";
+import { startOrderWorker } from "./queue/index.js";
 
 async function main() {
   const app = Fastify({ logger: true });
@@ -22,7 +26,7 @@ async function main() {
   });
 
   const port = Number(process.env.PORT) || 3000;
-  await app.listen({ port, host: '0.0.0.0' });
+  await app.listen({ port, host: "0.0.0.0" });
   console.log(`Server listening on http://localhost:${port}`);
 }
 
