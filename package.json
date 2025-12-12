@@ -19,14 +19,21 @@
     "devDependencies": {
         "@types/node": "^20",
         "@types/uuid": "^10.0.0",
+        "@types/ws": "^8.18.1",
         "tsx": "^4",
         "typescript": "^5",
         "vitest": "^1"
     },
     "dependencies": {
         "@fastify/websocket": "^10",
+        "@meteora-ag/dynamic-amm-sdk": "^1.1.12",
+        "@raydium-io/raydium-sdk-v2": "0.1.95-alpha",
+        "@solana/spl-token": "^0.4.9",
+        "@solana/web3.js": "^1.98.0",
         "@types/pg": "^8",
+        "bs58": "^6.0.0",
         "bullmq": "^5",
+        "dotenv": "^16.4.5",
         "fastify": "^4",
         "ioredis": "^5",
         "pg": "^8",
