@@ -18,17 +18,18 @@
     "license": "MIT",
     "devDependencies": {
         "@types/node": "^20",
+        "@types/uuid": "^10.0.0",
         "tsx": "^4",
         "typescript": "^5",
         "vitest": "^1"
     },
     "dependencies": {
-        "fastify": "^4",
         "@fastify/websocket": "^10",
+        "@types/pg": "^8",
         "bullmq": "^5",
+        "fastify": "^4",
         "ioredis": "^5",
         "pg": "^8",
-        "@types/pg": "^8",
         "uuid": "^9",
         "zod": "^3"
     }
