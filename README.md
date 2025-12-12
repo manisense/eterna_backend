@@ -37,14 +37,14 @@ npm test
 
 ## API
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/orders` | Submit order |
-| DELETE | `/orders/:symbol/:orderId` | Cancel order |
-| GET | `/orderbook/:symbol` | Live bids/asks |
-| GET | `/orders?symbol=` | Order history |
-| GET | `/trades?symbol=` | Trade history |
-| WS | `/ws` | Trade stream |
+| Method | Endpoint                   | Description    |
+| ------ | -------------------------- | -------------- |
+| POST   | `/orders`                  | Submit order   |
+| DELETE | `/orders/:symbol/:orderId` | Cancel order   |
+| GET    | `/orderbook/:symbol`       | Live bids/asks |
+| GET    | `/orders?symbol=`          | Order history  |
+| GET    | `/trades?symbol=`          | Trade history  |
+| WS     | `/ws`                      | Trade stream   |
 
 ## Project Structure
 ```
