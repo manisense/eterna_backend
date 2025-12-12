@@ -20,7 +20,11 @@ async function main() {
 
   // Root route for health check
   app.get("/", async () => {
-    return { status: "ok", service: "Order Execution Engine", version: "0.1.0" };
+    return {
+      status: "ok",
+      service: "Order Execution Engine",
+      version: "0.1.0",
+    };
   });
 
   app.get("/health", async () => {
