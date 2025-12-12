@@ -1,31 +1,35 @@
 {
-  "name": "order-execution-engine",
-  "version": "0.1.0",
-  "description": "Order Execution Engine – Backend Task 2",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsx watch src/index.ts",
-    "start": "node dist/index.js",
-    "test": "vitest run",
-    "test:watch": "vitest"
-  },
-  "keywords": ["order-book", "matching-engine", "fastify"],
-  "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^20",
-    "tsx": "^4",
-    "typescript": "^5",
-    "vitest": "^1"
-  },
-  "dependencies": {
-    "fastify": "^4",
-    "@fastify/websocket": "^10",
-    "bullmq": "^5",
-    "ioredis": "^5",
-    "pg": "^8",
-    "@types/pg": "^8",
-    "uuid": "^9",
-    "zod": "^3"
-  }
+    "name": "order-execution-engine",
+    "version": "0.1.0",
+    "description": "Order Execution Engine – Backend Task 2",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsx watch src/index.ts",
+        "start": "node dist/index.js",
+        "test": "vitest run",
+        "test:watch": "vitest"
+    },
+    "keywords": [
+        "order-book",
+        "matching-engine",
+        "fastify"
+    ],
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^20",
+        "tsx": "^4",
+        "typescript": "^5",
+        "vitest": "^1"
+    },
+    "dependencies": {
+        "fastify": "^4",
+        "@fastify/websocket": "^10",
+        "bullmq": "^5",
+        "ioredis": "^5",
+        "pg": "^8",
+        "@types/pg": "^8",
+        "uuid": "^9",
+        "zod": "^3"
+    }
 }
