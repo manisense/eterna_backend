@@ -27,10 +27,6 @@ async function main() {
     };
   });
 
-  app.get("/health", async () => {
-    return { status: "healthy", timestamp: new Date().toISOString() };
-  });
-
   const engine = new MatchingEngine();
 
   // Initialize DB tables
