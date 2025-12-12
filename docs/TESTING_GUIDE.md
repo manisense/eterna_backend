@@ -13,7 +13,7 @@ You will need:
     *   **GUI**: [Postman](https://www.postman.com/) or [Hoppscotch](https://hoppscotch.io/).
 3.  **Base URL**:
     *   Local: `http://localhost:3000`
-    *   Cloud: `https://your-app.onrender.com` (Replace with your actual URL)
+    *   Cloud: `https://eterna-backend-9ulk.onrender.com` (Replace with your actual URL)
 
 ---
 
@@ -23,7 +23,7 @@ Verify the server is running and accessible.
 
 **Request:**
 ```bash
-curl https://your-app.onrender.com/
+curl https://eterna-backend-9ulk.onrender.com/
 ```
 
 **Expected Response:**
@@ -45,7 +45,7 @@ Before placing orders, connect to the WebSocket feed to see real-time updates.
 Open a new terminal window and connect.
 
 ```bash
-wscat -c wss://your-app.onrender.com/ws
+wscat -c wss://eterna-backend-9ulk.onrender.com/ws
 ```
 
 **Expected Output:**
@@ -68,7 +68,7 @@ We will swap **0.01 SOL** for **USDC** (Devnet).
 
 **Request:**
 ```bash
-curl -X POST https://your-app.onrender.com/api/orders/execute \
+curl -X POST https://eterna-backend-9ulk.onrender.com/api/orders/execute \
   -H "Content-Type: application/json" \
   -d '{
     "tokenMintIn": "So11111111111111111111111111111111111111112",
@@ -112,7 +112,7 @@ User A wants to sell **10 BTC** at **$50,000**.
 
 **Request:**
 ```bash
-curl -X POST https://your-app.onrender.com/api/orders \
+curl -X POST https://eterna-backend-9ulk.onrender.com/api/orders \
   -H "Content-Type: application/json" \
   -d '{
     "type": "limit",
@@ -130,7 +130,7 @@ User B wants to buy **5 BTC** at **$50,000**. This should match immediately.
 
 **Request:**
 ```bash
-curl -X POST https://your-app.onrender.com/api/orders \
+curl -X POST https://eterna-backend-9ulk.onrender.com/api/orders \
   -H "Content-Type: application/json" \
   -d '{
     "type": "limit",
@@ -164,7 +164,7 @@ Check the order book. There should be **5 BTC** left for sale at $50,000.
 
 **Request:**
 ```bash
-curl https://your-app.onrender.com/api/orderbook/BTC-USDC
+curl https://eterna-backend-9ulk.onrender.com/api/orderbook/BTC-USDC
 ```
 
 **Expected Response:**
@@ -186,7 +186,7 @@ Try to swap a non-existent token.
 
 **Request:**
 ```bash
-curl -X POST https://your-app.onrender.com/api/orders/execute \
+curl -X POST https://eterna-backend-9ulk.onrender.com/api/orders/execute \
   -H "Content-Type: application/json" \
   -d '{
     "tokenMintIn": "INVALID_TOKEN_MINT_ADDRESS",
@@ -208,7 +208,7 @@ To test the queue system, you can spam multiple orders.
 
 ```bash
 for i in {1..5}; do
-  curl -X POST https://your-app.onrender.com/api/orders/execute \
+  curl -X POST https://eterna-backend-9ulk.onrender.com/api/orders/execute \
     -H "Content-Type: application/json" \
     -d '{
       "tokenMintIn": "So11111111111111111111111111111111111111112",
