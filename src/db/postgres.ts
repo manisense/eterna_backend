@@ -1,5 +1,5 @@
-import { Pool } from 'pg';
-import type { Order, Trade } from '../models/index.js';
+import { Pool } from "pg";
+import type { Order, Trade } from "../models/index.js";
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
@@ -33,7 +33,17 @@ export async function saveOrder(order: Order): Promise<void> {
     `INSERT INTO orders (id, symbol, side, type, price, quantity, filled, status, created_at)
      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
      ON CONFLICT (id) DO UPDATE SET filled=$7, status=$8`,
-    [order.id, order.symbol, order.side, order.type, order.price, order.quantity, order.filled, order.status, order.createdAt]
+    [
+      order.id,
+      order.symbol,
+      order.side,
+      order.type,
+      order.price,
+      order.quantity,
+      order.filled,
+      order.status,
+      order.createdAt,
+    ]
   );
 }
 
@@ -41,21 +51,39 @@ export async function saveTrade(trade: Trade): Promise<void> {
   await pool.query(
     `INSERT INTO trades (id, symbol, price, quantity, buy_order_id, sell_order_id, created_at)
      VALUES ($1,$2,$3,$4,$5,$6,$7)`,
-    [trade.id, trade.symbol, trade.price, trade.quantity, trade.buyOrderId, trade.sellOrderId, trade.createdAt]
+    [
+      trade.id,
+      trade.symbol,
+      trade.price,
+      trade.quantity,
+      trade.buyOrderId,
+      trade.sellOrderId,
+      trade.createdAt,
+    ]
   );
 }
 
 export async function getOrderHistory(symbol?: string): Promise<Order[]> {
   const res = symbol
-    ? await pool.query('SELECT * FROM orders WHERE symbol=$1 ORDER BY created_at DESC LIMIT 100', [symbol])
-    : await pool.query('SELECT * FROM orders ORDER BY created_at DESC LIMIT 100');
+    ? await pool.query(
+        "SELECT * FROM orders WHERE symbol=$1 ORDER BY created_at DESC LIMIT 100",
+        [symbol]
+      )
+    : await pool.query(
+        "SELECT * FROM orders ORDER BY created_at DESC LIMIT 100"
+      );
   return res.rows.map(rowToOrder);
 }
 
 export async function getTradeHistory(symbol?: string): Promise<Trade[]> {
   const res = symbol
-    ? await pool.query('SELECT * FROM trades WHERE symbol=$1 ORDER BY created_at DESC LIMIT 100', [symbol])
-    : await pool.query('SELECT * FROM trades ORDER BY created_at DESC LIMIT 100');
+    ? await pool.query(
+        "SELECT * FROM trades WHERE symbol=$1 ORDER BY created_at DESC LIMIT 100",
+        [symbol]
+      )
+    : await pool.query(
+        "SELECT * FROM trades ORDER BY created_at DESC LIMIT 100"
+      );
   return res.rows.map(rowToTrade);
 }
 
@@ -63,12 +91,12 @@ function rowToOrder(r: Record<string, unknown>): Order {
   return {
     id: r.id as string,
     symbol: r.symbol as string,
-    side: r.side as Order['side'],
-    type: r.type as Order['type'],
+    side: r.side as Order["side"],
+    type: r.type as Order["type"],
     price: Number(r.price),
     quantity: Number(r.quantity),
     filled: Number(r.filled),
-    status: r.status as Order['status'],
+    status: r.status as Order["status"],
     createdAt: Number(r.created_at),
   };
 }
